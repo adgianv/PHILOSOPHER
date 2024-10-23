@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void populate_config(t_conf *config, char *argv[], int argc)
+void    populate_config(t_conf *config, char *argv[], int argc)
 {
     config->stop = false;
 	config->num_philos = ft_atoi(argv[1]);
@@ -12,7 +12,8 @@ void populate_config(t_conf *config, char *argv[], int argc)
 		config->meals_till_full = ft_atoi(argv[5]);
 }
 
-void populate_philos(t_conf *config, t_phil *philos, pthread_mutex_t *forks, int i)
+void    populate_philos(t_conf *config, t_phil *philos, 
+                        pthread_mutex_t *forks, int i)
 {
     philos[i].forks = forks;
     philos[i].id = i + 1;
@@ -23,7 +24,7 @@ void populate_philos(t_conf *config, t_phil *philos, pthread_mutex_t *forks, int
     philos[i].config = config;
 }
 
-void	print_message(int id, char *act, t_conf *conf, bool d)
+void    print_message(int id, char *act, t_conf *conf, bool d)
 {
 	if (d)
 		return ;
@@ -33,7 +34,7 @@ void	print_message(int id, char *act, t_conf *conf, bool d)
 	return ;
 }
 
-void	destroy_mutexes(pthread_mutex_t *forks, t_phil *philos, int num_philos)
+void    destroy_mutexes(pthread_mutex_t *forks, t_phil *philos, int num_philos)
 {
 	int	i;
 
@@ -47,7 +48,7 @@ void	destroy_mutexes(pthread_mutex_t *forks, t_phil *philos, int num_philos)
 	free(philos);
 }
 
-bool is_digit(char c)
+bool    is_digit(char c)
 {
     if (c >= '0' && c <= '9')
         return (true);
